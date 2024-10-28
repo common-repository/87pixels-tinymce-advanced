@@ -1,0 +1,233 @@
+
+/**
+ * Plugin Name: Full TinyMCE WordPress Editor
+ * Plugin URI: http://87pixels.co.za/full-tinymce-wordpress-editor
+ * Version: 1.3.1
+ * Author: 87Pixels
+ * Author URI: http://www.87pixels.co.za
+ * Description: Extends and enhances the default WordPress editor
+ * License: GPL2
+ */
+
+
+
+body { background: #f1f1f1 !important; }
+
+/**
+ * Checkbox styles and animations
+ */
+
+
+
+.checkbox label:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.checkbox .cr {
+	position: relative;
+	display: inline-block;
+	border: 1px solid #a9a9a9;
+	border-radius: .25em;
+	width: 1.3em;
+	height: 1.3em;
+	float: left;
+	margin-right: .5em;
+}
+
+.checkbox .cr .cr-icon {
+	position: absolute;
+	font-size: .8em;
+	line-height: 0;
+	top: 50%;
+	left: 20%;
+}
+
+.checkbox label input[type="checkbox"] { display: none; }
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon {
+	transform: scale(3) rotateZ(-20deg);
+	opacity: 0;
+	transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon {
+	transform: scale(1) rotateZ(0deg);
+	opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr { opacity: .5; }
+
+.input-group-addon.checkbox { padding: 8px 0px 0px 10px; }
+
+.input-group .form-control {
+	background: #fff !important;
+	border-left: 1px solid rgba(0,0,0,.15);
+}
+
+/**
+ * input and labels 
+ */
+ 
+
+
+label { font-size: 1em; }
+
+/**
+ * Custom Buttons 
+ */
+
+@import url("/font-awesome-4.7.0/css/font-awesome.min.css");
+
+i.mce-i-icons:before {
+	font: normal normal normal 14px/1 FontAwesome;
+	content: "\f2b4";
+}
+
+.full_tmce_type i {
+	font: normal normal normal 30px/1 FontAwesome;
+	color: #444;
+	padding: 5px;
+}
+
+i.fa-chevron-up, i.fa-chevron-down {
+	font: normal normal normal 10px/1 FontAwesome;
+	color: #444;
+	padding: 5px;
+}
+
+i.fa.scroll {
+	font-family: FontAwesome;
+}
+
+/**
+ * Font Awesome Popup
+ */
+
+div.nep_mce_container { background: #f5f5f5; }
+
+div.full_tmce_caller {
+	padding: 4px 5px 0 5px;
+	position: relative;
+}
+
+div.full_tmce_caller i.scroll {
+	width: 20px;
+	font-size: 20px;
+	cursor: pointer;
+	outline: none;
+	padding: 5px 8px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	border-top: 3px solid #f5f5f5;
+	border-left: 1px solid #f5f5f5;
+	border-right: 1px solid #f5f5f5;
+	border-bottom: 1px solid transparent;
+}
+
+div.full_tmce_caller i.scroll.active {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	-moz-opacity: 1;
+	-khtml-opacity: 1;
+	opacity: 1;
+	border-top: 3px solid #63bbe9;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #fff;
+	background: #fff;
+}
+
+div.full_tmce_shown {
+	width: 330px;
+	height: 200px;
+	overflow: hidden;
+	border-top: 1px solid #ccc;
+	background: #fff;
+}
+
+div.full_tmce_nav {
+	float: right;
+	width: 35px;
+	height: 200px;
+	border-top: 1px solid #f5f5f5;
+	border-left: 1px solid #ccc;
+	padding: 49px 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.full_tmce_nav .full_tmce_arrow {
+	display: block;
+	background: #f7f7f7;
+	-webkit-box-shadow: 0 1px 0 #ccc;
+	box-shadow: 0 1px 0 #ccc;
+	color: #555;
+	text-decoration: none;
+	border: 1px solid #CCC;
+	-webkit-appearance: none;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	white-space: nowrap;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	cursor: pointer;
+	text-align: center;
+	margin: 20px 5px;
+}
+
+div.full_tmce_nav .full_tmce_arrow.full_tmce_arrow_active {
+	background: #eee;
+	border-color: #999;
+	-webkit-box-shadow: inset 0 2px 5px -3px rgba(0,0,0,.5);
+	box-shadow: inset 0 2px 5px -3px rgba(0,0,0,.5);
+	-webkit-transform: translateY(1px);
+	-ms-transform: translateY(1px);
+	transform: translateY(1px);
+}
+
+div.full_tmce_nav .full_tmce_arrow.full_tmce_arrow_inactive {
+	color: #a0a5aa!important;
+	border-color: #ddd!important;
+	background: #f7f7f7!important;
+	-webkit-box-shadow: none!important;
+	box-shadow: none!important;
+	text-shadow: 0 1px 0 #fff!important;
+	cursor: default;
+	-webkit-transform: none!important;
+	-ms-transform: none!important;
+	transform: none!important;
+}
+
+div.full_tmce_type {
+	-webkit-box-shadow: inset 0px -1px 0px 0px #CCC;
+	-moz-box-shadow: inset 0px -1px 0px 0px #CCC;
+	box-shadow: inset 0px -1px 0px 0px #CCC;
+}
+
+table#full_tmce_icons a[role=option], 
+table#full_tmce_icons a[role=option]:focus, 
+table#full_tmce_icons a[role=option]:hover {
+	outline: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+table#full_tmce_icons a[role="option"] i {
+    width: 30px;
+    padding: 5px;
+}
+
+table#full_tmce_icons a[role=option] i:hover, 
+table#full_tmce_icons a[role=option] i:focus {
+	-webkit-box-shadow: inset 0px 0px 10px 0px rgba(204, 204, 204, 0.5);
+	-moz-box-shadow: inset 0px 0px 10px 0px rgba(204, 204, 204, 0.5);
+	box-shadow: inset 0px 0px 10px 0px rgba(204, 204, 204, 0.5);
+}
